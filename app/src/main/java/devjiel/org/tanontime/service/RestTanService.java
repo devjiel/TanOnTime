@@ -17,7 +17,7 @@ import java.util.List;
 
 public class RestTanService {
 
-    public static final String TAN_OPEN_DATA_URL = "http://open.tan.fr/ewp/";
+    public static final String TAN_OPEN_DATA_URL = "http://open_preprod.tan.fr/ewp/";
     public static final String TAN_TEMPS_ATTENTE = TAN_OPEN_DATA_URL + "tempsattente.json";
 
     public String callService(String serverURL, String... parameters) throws IOException {

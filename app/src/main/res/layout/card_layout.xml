@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:id="@+id/main_card_view"
+                                    android:layout_gravity="top"
+                                    android:layout_width="match_parent"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginBottom="4dp"
+                                    android:layout_height="200dp"
+                                    card_view:cardCornerRadius="2dp"
+                                    android:elevation="2dp">
+
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
+                android:text="Rond Point de Paris"/>
+
+        <TextView
+                android:id="@+id/infos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
