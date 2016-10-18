@@ -1,20 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:fillViewport="true"
+            android:background="#dcdcdc"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+    <LinearLayout xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/main_card_view"
+            android:layout_gravity="top"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            card_view:cardCornerRadius="4dp"
+            android:elevation="2dp">
+
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+
+            <TextView
+                    android:id="@+id/info_text_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+                    android:text="Rond Point de Paris"/>
+
+            <TextView
+                    android:id="@+id/info_text_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/info_text_1"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
+
+</ScrollView>
+
+<!--
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:fillViewport="true"
             android:background="#FFFFFF"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
+
+
+
 
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical" >
-        <!-- <EditText
+        <EditText
                 android:paddingTop="20px"
                 android:id="@+id/serverText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="" /> -->
+                android:text="" />
         <Button
                 android:paddingTop="10px"
                 android:id="@+id/GetServerData"
@@ -25,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
         />
-        <!--<TextView
+        <TextView
                 android:paddingTop="20px"
                 android:textStyle="bold"
                 android:layout_width="fill_parent"
@@ -36,7 +80,7 @@
                 android:id="@+id/output"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Output : Click on button to get server data." /> -->
+                android:text="Output : Click on button to get server data." />
 
         <TextView
                 android:paddingTop="20px"
@@ -53,3 +97,4 @@
 
     </LinearLayout>
 </ScrollView>
+-->
