@@ -1,4 +1,4 @@
-package devjiel.org.tanontime.model;
+package devjiel.org.tanontime.model.tempsattente;
 
 /**
  * Created by devjiel on 16/10/2016.

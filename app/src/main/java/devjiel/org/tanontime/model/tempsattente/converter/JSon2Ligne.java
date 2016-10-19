@@ -1,8 +1,8 @@
-package devjiel.org.tanontime.model.converter;
+package devjiel.org.tanontime.model.tempsattente.converter;
 
-import devjiel.org.tanontime.model.Arret;
-import devjiel.org.tanontime.model.Ligne;
-import devjiel.org.tanontime.model.TYPE_LIGNE;
+import devjiel.org.tanontime.model.converter.JSon2Object;
+import devjiel.org.tanontime.model.tempsattente.Ligne;
+import devjiel.org.tanontime.model.tempsattente.TYPE_LIGNE;
 import org.json.JSONException;
 import org.json.JSONObject;
 

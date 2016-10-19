@@ -1,6 +1,4 @@
-package devjiel.org.tanontime.model;
-
-import org.json.JSONObject;
+package devjiel.org.tanontime.model.tempsattente;
 
 /**
  * Created by devjiel on 16/10/2016.

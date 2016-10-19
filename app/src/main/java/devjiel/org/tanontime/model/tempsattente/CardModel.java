@@ -1,4 +1,4 @@
-package devjiel.org.tanontime.model;
+package devjiel.org.tanontime.model.tempsattente;
 
 import java.util.List;
 

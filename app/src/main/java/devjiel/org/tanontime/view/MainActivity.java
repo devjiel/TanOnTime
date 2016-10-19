@@ -10,8 +10,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import devjiel.org.tanontime.R;
-import devjiel.org.tanontime.model.CardModel;
-import devjiel.org.tanontime.model.InfoTrafic;
+import devjiel.org.tanontime.model.tempsattente.CardModel;
+import devjiel.org.tanontime.model.tempsattente.InfoTrafic;
 import devjiel.org.tanontime.service.RestTanService;
 
 import java.io.IOException;
@@ -44,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(recyclerLayoutManager);
 
         // Call service on startup
-        new ServiceCallOperation().execute();
+        new ServiceCallTempsArret().execute();
 
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe);
         swipeRefresh.setOnRefreshListener(
                 new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
                     public void onRefresh() {
-                        new ServiceCallOperation().execute();
+                        new ServiceCallTempsArret().execute();
                     }
                 }
         );
@@ -75,14 +75,14 @@ public class MainActivity extends AppCompatActivity {
 
     // Class with extends AsyncTask class
 
-    private class ServiceCallOperation  extends AsyncTask<String, Void, Void> {
+    private class ServiceCallTempsArret extends AsyncTask<String, Void, Void> {
 
         private RestTanService service;
 
         // Required initialization
         private String Error = null;
 
-        public ServiceCallOperation() {
+        public ServiceCallTempsArret() {
             service = new RestTanService();
         }
 

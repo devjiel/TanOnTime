@@ -1,7 +1,9 @@
 package devjiel.org.tanontime.service;
 
-import devjiel.org.tanontime.model.InfoTrafic;
-import devjiel.org.tanontime.model.converter.JSon2InfoTrafic;
+import devjiel.org.tanontime.model.arret.Arret;
+import devjiel.org.tanontime.model.arret.converter.JSon2Arret;
+import devjiel.org.tanontime.model.tempsattente.InfoTrafic;
+import devjiel.org.tanontime.model.tempsattente.converter.JSon2InfoTrafic;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,6 +21,7 @@ public class RestTanService {
 
     public static final String TAN_OPEN_DATA_URL = "http://open_preprod.tan.fr/ewp/";
     public static final String TAN_TEMPS_ATTENTE = TAN_OPEN_DATA_URL + "tempsattente.json";
+    public static final String TAN_ARRET = TAN_OPEN_DATA_URL + "arrets.json";
 
     public String callService(String serverURL, String... parameters) throws IOException {
 
@@ -87,6 +90,33 @@ public class RestTanService {
         }
 
         return infoTrafics;
+    }
+
+    public List<Arret> callArretService() throws IOException {
+
+        String result = callService(TAN_ARRET);
+
+        JSONArray jsonResponse;
+        List<Arret> arrets = new ArrayList<>();
+
+        try {
+
+            /****** Creates a new JSONObject with name/value mappings from the JSON string. ********/
+            jsonResponse = new JSONArray(result);
+
+            for(int i=0; i < jsonResponse.length(); i++)
+            {
+                /****** Get Object for each JSON node.***********/
+                JSONObject jsonChildNode = jsonResponse.getJSONObject(i);
+                arrets.add(new JSon2Arret().toObject(jsonChildNode));
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return arrets;
     }
 
 }

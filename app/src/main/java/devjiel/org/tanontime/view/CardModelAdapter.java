@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import devjiel.org.tanontime.R;
-import devjiel.org.tanontime.model.CardModel;
-import devjiel.org.tanontime.model.InfoTrafic;
+import devjiel.org.tanontime.model.tempsattente.CardModel;
+import devjiel.org.tanontime.model.tempsattente.InfoTrafic;
 
 import java.util.List;
 
