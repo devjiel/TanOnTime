@@ -1,11 +1,14 @@
 package devjiel.org.tanontime.view;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import devjiel.org.tanontime.R;
 import devjiel.org.tanontime.model.CardModel;
 import devjiel.org.tanontime.model.InfoTrafic;
@@ -53,18 +56,22 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-        /*CardView card = (CardView) findViewById(R.id.main_card_view);
-
-        card.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton floatingButton = (FloatingActionButton) findViewById(R.id.floatingButton);
+        floatingButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View arg0) {
-                new ServiceCallOperation().execute();
+            public void onClick(View v) {
+
+                Intent createBusStopActivity = new Intent(v.getContext(),CreateBusStopActivity.class);
+
+                /*Bundle bndlanimation =
+                        ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.slidein_start,R.anim.slideout_start).toBundle();*/
+                startActivity(createBusStopActivity);
+                overridePendingTransition(R.anim.slidein_start, R.anim.slideout_start);
             }
-        });*/
+        });
 
     }
-
 
     // Class with extends AsyncTask class
 
