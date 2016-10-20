@@ -22,9 +22,9 @@ public class RestTanService {
     public static final String TAN_OPEN_DATA_URL = "http://open_preprod.tan.fr/ewp/";
     public static final String TAN_TEMPS_ATTENTE = TAN_OPEN_DATA_URL + "tempsattente.json";
     public static final String TAN_ARRET = TAN_OPEN_DATA_URL + "arrets.json";
-    public static final String REQUEST_ENCODING = "ISO-8859-1";
+    public static final String DEFAULT_REQUEST_ENCODING = "UTF-8";
 
-    public String callService(String serverURL, String... parameters) throws IOException {
+    public String callService(String serverURL, String encoding, String... parameters) throws IOException {
 
         for(String param: parameters) {
             serverURL += "/" + param;
@@ -47,7 +47,7 @@ public class RestTanService {
 
             // Get the server response
 
-            reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), REQUEST_ENCODING));
+            reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), encoding));
             StringBuilder sb = new StringBuilder();
             String line;
 
@@ -70,7 +70,7 @@ public class RestTanService {
 
     public List<InfoTrafic> callTempAttenteService(String arret) throws IOException {
 
-        String result = callService(TAN_TEMPS_ATTENTE, arret);
+        String result = callService(TAN_TEMPS_ATTENTE, DEFAULT_REQUEST_ENCODING, arret);
 
         JSONArray jsonResponse;
         List<InfoTrafic> infoTrafics = new ArrayList<>();
@@ -97,7 +97,7 @@ public class RestTanService {
 
     public List<Arret> callArretService() throws IOException {
 
-        String result = callService(TAN_ARRET);
+        String result = callService(TAN_ARRET, "ISO-8859-1");
 
         JSONArray jsonResponse;
         List<Arret> arrets = new ArrayList<>();
