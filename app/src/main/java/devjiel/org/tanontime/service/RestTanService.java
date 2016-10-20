@@ -22,6 +22,7 @@ public class RestTanService {
     public static final String TAN_OPEN_DATA_URL = "http://open_preprod.tan.fr/ewp/";
     public static final String TAN_TEMPS_ATTENTE = TAN_OPEN_DATA_URL + "tempsattente.json";
     public static final String TAN_ARRET = TAN_OPEN_DATA_URL + "arrets.json";
+    public static final String REQUEST_ENCODING = "ISO-8859-1";
 
     public String callService(String serverURL, String... parameters) throws IOException {
 
@@ -46,7 +47,7 @@ public class RestTanService {
 
             // Get the server response
 
-            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), REQUEST_ENCODING));
             StringBuilder sb = new StringBuilder();
             String line;
 
@@ -59,7 +60,9 @@ public class RestTanService {
             // Append Server Response To Content String
             result = sb.toString();
         } finally {
-            reader.close();
+            if (null != reader) {
+                reader.close();
+            }
         }
 
         return result;
