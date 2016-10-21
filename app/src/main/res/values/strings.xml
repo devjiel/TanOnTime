@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TanOnTime</string>
+    <string name="action_search">Rechercher</string>
 </resources>
