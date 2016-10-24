@@ -1,14 +1,12 @@
-package devjiel.org.tanontime.view;
+package devjiel.org.tanontime.view.newbusstop;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import devjiel.org.tanontime.R;
 import devjiel.org.tanontime.model.arret.Arret;
-import devjiel.org.tanontime.model.arret.Ligne;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +30,7 @@ public class NewBusStopAdapter extends RecyclerView.Adapter<NewBusStopAdapter.Ne
 
     @Override
     public NewBusStopHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_new_bus_stop_layout, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.bus_stop_list_card_layout, viewGroup, false);
         return new NewBusStopHolder(view);
     }
 

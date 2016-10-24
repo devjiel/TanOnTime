@@ -1,4 +1,4 @@
-package devjiel.org.tanontime.view;
+package devjiel.org.tanontime.view.main;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -13,6 +13,7 @@ import devjiel.org.tanontime.R;
 import devjiel.org.tanontime.model.tempsattente.CardModel;
 import devjiel.org.tanontime.model.tempsattente.InfoTrafic;
 import devjiel.org.tanontime.service.RestTanService;
+import devjiel.org.tanontime.view.newbusstop.NewBusStopActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent createBusStopActivity = new Intent(v.getContext(),CreateBusStopActivity.class);
+                Intent createBusStopActivity = new Intent(v.getContext(),NewBusStopActivity.class);
 
                 /*Bundle bndlanimation =
                         ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.slidein_start,R.anim.slideout_start).toBundle();*/
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             swipeRefresh.setRefreshing(false);
             if(null == recyclerAdapter) {
                 // Create adapter on first call
-                recyclerAdapter = new CardModelAdapter(cardModels);
+                recyclerAdapter = new MainCardModelAdapter(cardModels);
                 recyclerView.setAdapter(recyclerAdapter);
             } else {
                 recyclerAdapter.notifyDataSetChanged();

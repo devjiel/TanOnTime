@@ -1,16 +1,14 @@
-package devjiel.org.tanontime.view;
+package devjiel.org.tanontime.view.newbusstop;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.*;
 import devjiel.org.tanontime.R;
 import devjiel.org.tanontime.model.arret.Arret;
 import devjiel.org.tanontime.service.RestTanService;
@@ -20,41 +18,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by devjiel on 19/10/2016.
+ * Created by devjiel on 22/10/2016.
  */
-public class CreateBusStopActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class BusStopListFragment extends Fragment implements SearchView.OnQueryTextListener {
 
-    private RecyclerView recyclerview;
+    private RecyclerView recyclerView;
     private List<Arret> arrets;
     private NewBusStopAdapter newBusStopAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_new_bus_stop_layout);
-
-        recyclerview = (RecyclerView) findViewById(R.id.recyclerviewNewBusStop);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerview.setLayoutManager(layoutManager);
-
-        // TODO: Add Progress Bar
+        setHasOptionsMenu(true);
         new ServiceCallArret().execute();
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.new_bus_stop_menu, menu);
-        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchView.setOnQueryTextListener(this);
-        return true;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.bus_stop_list_layout, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewNewBusStop);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        return view;
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        CreateBusStopActivity.this.finish();
-        overridePendingTransition(R.anim.slidein_end, R.anim.slideout_end);
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        inflater.inflate(R.menu.new_bus_stop_menu, menu);
+        final MenuItem item = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(this);
     }
 
     @Override
@@ -122,7 +119,7 @@ public class CreateBusStopActivity extends AppCompatActivity implements SearchVi
                 if(null == newBusStopAdapter) {
                     // Create adapter on first call
                     newBusStopAdapter = new NewBusStopAdapter(arrets);
-                    recyclerview.setAdapter(newBusStopAdapter);
+                    recyclerView.setAdapter(newBusStopAdapter);
                 } else {
                     newBusStopAdapter.notifyDataSetChanged();
                 }
@@ -134,5 +131,6 @@ public class CreateBusStopActivity extends AppCompatActivity implements SearchVi
         }
 
     }
+
 
 }
