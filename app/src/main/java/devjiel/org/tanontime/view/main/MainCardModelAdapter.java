@@ -1,4 +1,4 @@
-package devjiel.org.tanontime.view;
+package devjiel.org.tanontime.view.main;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by devjiel on 18/10/2016.
  */
-public class CardModelAdapter extends RecyclerView.Adapter<CardModelAdapter.CardModelHolder> {
+public class MainCardModelAdapter extends RecyclerView.Adapter<MainCardModelAdapter.CardModelHolder> {
 
     private List<CardModel> cardModels;
 
@@ -47,7 +47,7 @@ public class CardModelAdapter extends RecyclerView.Adapter<CardModelAdapter.Card
     }
 
 
-    public CardModelAdapter(List<CardModel> cardModels) {
+    public MainCardModelAdapter(List<CardModel> cardModels) {
         this.cardModels = cardModels;
     }
 
