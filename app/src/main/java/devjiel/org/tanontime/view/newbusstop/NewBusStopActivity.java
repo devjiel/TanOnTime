@@ -21,7 +21,7 @@ public class NewBusStopActivity extends AppCompatActivity {
                 return;
             }
 
-            BusStopListFragment busStopListFragment = new BusStopListFragment();
+            NewBusStopListFragment busStopListFragment = new NewBusStopListFragment();
             busStopListFragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, busStopListFragment).commit();

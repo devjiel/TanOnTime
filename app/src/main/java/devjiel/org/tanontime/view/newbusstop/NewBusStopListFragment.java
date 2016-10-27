@@ -3,28 +3,33 @@ package devjiel.org.tanontime.view.newbusstop;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
-import android.view.*;
-import devjiel.org.tanontime.R;
-import devjiel.org.tanontime.model.arret.Arret;
-import devjiel.org.tanontime.service.RestTanService;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import devjiel.org.tanontime.R;
+import devjiel.org.tanontime.model.arret.Arret;
+import devjiel.org.tanontime.service.RestTanService;
+
 /**
  * Created by devjiel on 22/10/2016.
  */
-public class BusStopListFragment extends Fragment implements SearchView.OnQueryTextListener {
+public class NewBusStopListFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     private RecyclerView recyclerView;
     private List<Arret> arrets;
-    private NewBusStopAdapter newBusStopAdapter;
+    private NewBusStopListAdapter newBusStopAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -118,7 +123,12 @@ public class BusStopListFragment extends Fragment implements SearchView.OnQueryT
             if (Error == null) {
                 if(null == newBusStopAdapter) {
                     // Create adapter on first call
-                    newBusStopAdapter = new NewBusStopAdapter(arrets);
+                    newBusStopAdapter = new NewBusStopListAdapter(arrets, new OnBusStopClickListener() {
+                        @Override
+                        public void onItemClick(Arret arret) {
+                            Toast.makeText(getContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+                        }
+                    });
                     recyclerView.setAdapter(newBusStopAdapter);
                 } else {
                     newBusStopAdapter.notifyDataSetChanged();
